@@ -107,7 +107,9 @@ The first notebook, is simple the game  where we want to develop the appropriate
 
 The second notebook is an example about how to initialize the custom environment,
 
-that has the structure
+[snake_env.py](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/snake/snake/envs/snake_env.py)
+
+where it  has the structure
 
 <img src="assets/images/posts/README/image-20221108230436802.png" alt="image-20221108230436802" style="zoom:100%;" />
 
