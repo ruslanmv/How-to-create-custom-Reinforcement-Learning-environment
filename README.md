@@ -105,7 +105,7 @@ The first notebook, is simple the game  where we want to develop the appropriate
 
 ![notebook1](assets/images/posts/README/notebook1.gif)
 
-The second notebook is an example about how to initialize the custom environment,
+The second notebook is an example about how to initialize the **custom environment,**
 
 [snake_env.py](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/snake/snake/envs/snake_env.py)
 
