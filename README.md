@@ -56,7 +56,7 @@ cd How-to-create-custom-Reinforcement-Learning-environment
 pip install -e snake
 ```
 
-<img src="assets/images/posts/README/image-20221108204035363.png" alt="image-20221108204035363" style="zoom:50%;" />
+<img src="assets/images/posts/README/image-20221108204035363.png" alt="image-20221108204035363" style="zoom:100%;" />
 
 
 
@@ -105,11 +105,11 @@ The second notebook is an example about how to initialize the custom environment
 
 that has the structure
 
-<img src="assets/images/posts/README/image-20221108230436802.png" alt="image-20221108230436802" style="zoom:50%;" />
+<img src="assets/images/posts/README/image-20221108230436802.png" alt="image-20221108230436802" style="zoom:100%;" />
 
 in our case 
 
-<img src="assets/images/posts/README/image-20221108230519054.png" alt="image-20221108230519054" style="zoom:50%;" />
+<img src="assets/images/posts/README/image-20221108230519054.png" alt="image-20221108230519054" style="zoom:100%;" />
 
 [1-Creating-a-Gym-Environment.ipynb](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/1-Creating-a-Gym-Environment.ipynb)
 
