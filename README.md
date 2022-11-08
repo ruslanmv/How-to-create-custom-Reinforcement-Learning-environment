@@ -42,7 +42,11 @@ python -m ipykernel install --user --name gym --display-name "Python (Gym)"
 
 and then  we clone our repository
 
-git clone 
+```
+git clone https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment.git
+```
+
+
 
 ```
 cd How-to-create-custom-Reinforcement-Learning-environment
@@ -91,3 +95,24 @@ jupyter kernelspec uninstall gym
 
 # Creating an Open AI Gym Environment
 
+Once is loaded the Python (Gym) kernel  you can open the example notebooks.
+
+The first notebook, is simple the game  where we want to develop the appropriate enviroment
+
+ [0-Custom-Snake-Game.ipynb](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/0-Custom-Snake-Game.ipynb)
+
+The second notebook is an example about how to initialize the custom environment,
+
+that has the structure
+
+<img src="assets/images/posts/README/image-20221108230436802.png" alt="image-20221108230436802" style="zoom:50%;" />
+
+in our case 
+
+<img src="assets/images/posts/README/image-20221108230519054.png" alt="image-20221108230519054" style="zoom:50%;" />
+
+[1-Creating-a-Gym-Environment.ipynb](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/1-Creating-a-Gym-Environment.ipynb)
+
+and finally the third notebook is simply an application of the Gym Environment into a RL model.
+
+[2-Applying-a-Custom-Environment.ipyn](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/2-Applying-a-Custom-Environment.ipynb)

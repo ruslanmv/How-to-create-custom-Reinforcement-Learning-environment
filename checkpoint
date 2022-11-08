@@ -1,0 +1,2 @@
+model_checkpoint_path: "test_dqn_snake_weights_100000.h5f"
+all_model_checkpoint_paths: "test_dqn_snake_weights_100000.h5f"
