@@ -97,9 +97,13 @@ jupyter kernelspec uninstall gym
 
 Once is loaded the Python (Gym) kernel  you can open the example notebooks.
 
-The first notebook, is simple the game  where we want to develop the appropriate enviroment
+The first notebook, is simple the game  where we want to develop the appropriate environment
 
  [0-Custom-Snake-Game.ipynb](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/0-Custom-Snake-Game.ipynb)
+
+
+
+![notebook1](assets/images/posts/README/notebook1.gif)
 
 The second notebook is an example about how to initialize the custom environment,
 
