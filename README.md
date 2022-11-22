@@ -189,3 +189,14 @@ Let us assume that you have a different setup of seats, so in order to identify 
 pip install opencv-python
 ```
 
+In this program [Tool-pixel-3.ipynb](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/custom_game/Tool-pixel-3.ipynb)
+
+we can find the all the seats
+
+![image-20221122234534983](README.assets/image-20221122234534983.png)
+
+Then we find all the centers of those countours
+
+![image-20221122235428004](README.assets/image-20221122235428004.png)
+
+That will be the positions of our game.
