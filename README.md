@@ -160,3 +160,23 @@ run this program by pressing **ctrl+F5**
 ![image-20221122120256164](README.assets/image-20221122120256164.png)
 
 and move with the arrows the desired desktop.
+
+
+
+## Generator of coordinates with mouse
+
+On Python >= 3.6, you can also try this command:
+
+```
+pip install pyqt5
+```
+
+Let us assume that we want to get the coordinates of seats of one building. There are several places marked with green points.
+
+We can determine the coordinates with the following program
+
+[Tool-Pixel 1.ipynb](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/custom_game/Tool-Pixel 1.ipynb)
+
+we can get the list of coordinates of seats of the map.
+
+![image-20221122204208218](README.assets/image-20221122204208218.png)
