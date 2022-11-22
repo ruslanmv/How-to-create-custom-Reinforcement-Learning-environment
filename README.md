@@ -209,3 +209,20 @@ with open('seats.pkl', 'rb') as f:
     mynewlist = pickle.load(f)
 ```
 
+# Office Seat Game
+
+The following code, gives the game to select the seat.
+
+The red circles, the desired, and the blue ones, the not desired.
+
+[14_seat_office.py](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/custom_game/basics_py/14_seat_office.py)
+
+
+
+![image-20221123002739072](README.assets/image-20221123002739072.png)
+
+Each time you arrive to the red circles you got the **hit desired** goal otherwise is  **hit not desired**:
+
+![image-20221123003011023](README.assets/image-20221123003011023.png)
+
+The next step is create the gym environment by using this game.
