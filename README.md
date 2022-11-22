@@ -163,7 +163,7 @@ and move with the arrows the desired desktop.
 
 
 
-## Generator of coordinates with mouse
+## Manual Generator of coordinates
 
 On Python >= 3.6, you can also try this command:
 
@@ -175,8 +175,17 @@ Let us assume that we want to get the coordinates of seats of one building. Ther
 
 We can determine the coordinates with the following program
 
-[Tool-Pixel 1.ipynb](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/custom_game/Tool-Pixel 1.ipynb)
+[Tool-Pixel-1.ipynb](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/custom_game/Tool-Pixel-1.ipynb)
 
 we can get the list of coordinates of seats of the map.
 
 ![image-20221122204208218](README.assets/image-20221122204208218.png)
+
+## Automatic Generator of coordinates
+
+Let us assume that you have a different setup of seats, so in order to identify the green circles we can use open cv
+
+```
+pip install opencv-python
+```
+
