@@ -122,3 +122,41 @@ in our case
 and finally the third notebook is simply an application of the Gym Environment into a RL model.
 
 [2-Applying-a-Custom-Environment.ipyn](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/2-Applying-a-Custom-Environment.ipynb)
+
+
+
+
+
+# Custom office game
+
+
+
+We are interested to build  a program that will find the best desktop .
+
+The first program is the game where will be developed the enviroment of gym.
+
+[12_many_office_detection.py](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/custom_game/basics_py/12_many_office_detection.py)
+
+
+
+After is cloned this repo , open with  in **Visual Studio Code**
+
+```
+code .
+```
+
+you can open the program
+
+```
+How-to-create-custom-Reinforcement-Learning-environment\custom_game\12_many_office_detection.py
+```
+
+make sure you have the **Gym** environment
+
+![image-20221122120140310](README.assets/image-20221122120140310.png)
+
+run this program by pressing **ctrl+F5** 
+
+![image-20221122120256164](README.assets/image-20221122120256164.png)
+
+and move with the arrows the desired desktop.
