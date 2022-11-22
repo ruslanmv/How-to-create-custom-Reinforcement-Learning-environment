@@ -14,6 +14,14 @@ display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 WHITE = (255, 255, 255)
 
 
+
+
+import random
+import pickle
+with open('seats.pkl', 'rb') as f:
+    seats_coordinates = pickle.load(f)
+
+
 pygame.display.set_caption("Office Detection!")
 
 
@@ -31,13 +39,16 @@ man_rect.topleft = (25, 25)
 
 desktop_image = pygame.image.load("point_blue.png")
 desktop_rect = desktop_image.get_rect()
-desktop_rect.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2)
+
+desktop_pos_1=random.choice(seats_coordinates)
+desktop_rect.center = (desktop_pos_1[0], desktop_pos_1[1])
 
 
 
 desktop_image2 = pygame.image.load("point_red.png")
 desktop_rect2 = desktop_image2.get_rect()
-desktop_rect2.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2+100)
+desktop_pos_2=random.choice(seats_coordinates)
+desktop_rect2.center = (desktop_pos_2[0], desktop_pos_2[1])
 
 
 
@@ -64,23 +75,33 @@ while running:
     if man_rect.colliderect(desktop_rect):
         print("HIT NOT DESIRED")
         #Respawn in a new position
-        desktop_rect.x = random.randint(0, WINDOW_WIDTH - 32)
-        desktop_rect.y = random.randint(0, WINDOW_HEIGHT - 32)
+        desktop_pos_new_1=random.choice(seats_coordinates)
+        
+        desktop_rect.x = desktop_pos_new_1[0]
+        desktop_rect.y = desktop_pos_new_1[1]
 
     #Check for collision between two rects
     if man_rect.colliderect(desktop_rect2):
         print("HIT DESIRED")
         #Respawn in a new position
-        desktop_rect2.x = random.randint(0, WINDOW_WIDTH - 32)
-        desktop_rect2.y = random.randint(0, WINDOW_HEIGHT - 32)
+        desktop_pos_new_2=random.choice(seats_coordinates)
+        desktop_rect2.x = desktop_pos_new_2[0]
+        desktop_rect2.y = desktop_pos_new_2[1]
 
   
   
   
     #Fill display surface
     #display_surface.fill((0, 0, 0))
+
+    bg = pygame.image.load("background.png")
+
+   
+
     #Give a background color to the display
-    display_surface.fill(WHITE)
+    #display_surface.fill(WHITE)
+    #INSIDE OF THE GAME LOOP
+    display_surface.blit(bg, (0, 0))
 
     #Draw rectangles to represent the rect's of each object
     pygame.draw.rect(display_surface, (0, 255, 0), man_rect, 1)
@@ -92,6 +113,7 @@ while running:
     display_surface.blit(man_image, man_rect)
     display_surface.blit(desktop_image, desktop_rect)
     display_surface.blit(desktop_image2, desktop_rect2)
+
 
 
     #Update dispaly

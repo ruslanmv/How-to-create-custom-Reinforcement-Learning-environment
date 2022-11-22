@@ -195,8 +195,17 @@ we can find the all the seats
 
 ![image-20221122234534983](README.assets/image-20221122234534983.png)
 
-Then we find all the centers of those countours
+Then we find all the centers of those contours
 
 ![image-20221122235428004](README.assets/image-20221122235428004.png)
 
-That will be the positions of our game.
+That will be the positions of our game
+
+and can be loaded by  the command
+
+```python
+import pickle
+with open('seats.pkl', 'rb') as f:
+    mynewlist = pickle.load(f)
+```
+
