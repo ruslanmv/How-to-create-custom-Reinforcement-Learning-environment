@@ -43,7 +43,7 @@ desktop_rect.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2)
 
 desktop_image2 = pygame.image.load("desktop2.png")
 desktop_rect2 = desktop_image2.get_rect()
-desktop_rect2.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2)
+desktop_rect2.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2+100)
 
 
 
@@ -71,13 +71,15 @@ while running:
 
     #Check for collision between two rects
     if man_rect.colliderect(desktop_rect):
-        print("HIT")
+        print("HIT NOT DESIRED")
+        #Respawn in a new position
         desktop_rect.x = random.randint(0, WINDOW_WIDTH - 32)
         desktop_rect.y = random.randint(0, WINDOW_HEIGHT - 32)
 
     #Check for collision between two rects
     if man_rect.colliderect(desktop_rect2):
-        print("HIT")
+        print("HIT DESIRED")
+        #Respawn in a new position
         desktop_rect2.x = random.randint(0, WINDOW_WIDTH - 32)
         desktop_rect2.y = random.randint(0, WINDOW_HEIGHT - 32)
 
@@ -92,14 +94,12 @@ while running:
     #Draw rectangles to represent the rect's of each object
     pygame.draw.rect(display_surface, (0, 255, 0), man_rect, 1)
     pygame.draw.rect(display_surface, (255, 255, 0), desktop_rect, 1)
-
     pygame.draw.rect(display_surface, (255, 255, 0), desktop_rect2, 1)
 
 
     #Blit assets
     display_surface.blit(man_image, man_rect)
     display_surface.blit(desktop_image, desktop_rect)
-
     display_surface.blit(desktop_image2, desktop_rect2)
 
 
