@@ -211,7 +211,7 @@ with open('seats.pkl', 'rb') as f:
 
 # Office Seat Game
 
-The following code, gives the game to select the seat.
+The following code, gives the game to select the seat. The person is the yellow circle.
 
 The red circles, the desired, and the blue ones, the not desired.
 
