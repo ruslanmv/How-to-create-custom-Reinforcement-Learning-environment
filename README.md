@@ -219,7 +219,7 @@ The red circles, the desired, and the blue ones, the not desired.
 
 
 
-![image-20221123002739072](README.assets/image-20221123002739072.png)
+![](README.assets/game_1.gif)
 
 Each time you arrive to the red circles you got the **hit desired** goal otherwise is  **hit not desired**:
 
