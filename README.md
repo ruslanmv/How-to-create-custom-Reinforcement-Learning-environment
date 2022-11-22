@@ -133,7 +133,7 @@ and finally the third notebook is simply an application of the Gym Environment i
 
 We are interested to build  a program that will find the best desktop .
 
-The first program is the game where will be developed the enviroment of gym.
+The first program is the game where will be developed the environment of gym.
 
 [12_many_office_detection.py](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/custom_game/basics_py/12_many_office_detection.py)
 
