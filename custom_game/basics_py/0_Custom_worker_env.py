@@ -10,7 +10,7 @@ GREEN = pygame.Color(0, 255, 0)
 with open('seats.pkl', 'rb') as f:
     seats_coordinates = pickle.load(f)
 
-class PersonEnv():
+class WorkerEnv():
     
     def __init__(self,frame_size_x,frame_size_y):
         '''
@@ -23,13 +23,13 @@ class PersonEnv():
     
     def reset(self):
         '''
-        Resets the game, along with the default Person size and spawning seat.
+        Resets the game, along with the default Worker size and spawning seat.
         '''
         #self.game_window.fill(BLACK)
 
 
-        self.Person_pos = [100, 50]
-        self.Person_body = [[100, 50], [100-10, 50], [100-(2*10), 50]]
+        self.Worker_pos = [100, 50]
+        self.Worker_body = [[100, 50], [100-10, 50], [100-(2*10), 50]]
         self.seat_pos = self.spawn_seat()
         
         self.seat_spawn = True
@@ -43,7 +43,7 @@ class PersonEnv():
     def change_direction(self,action,direction):
         '''
         Changes direction based on action input. 
-        Checkes to make sure Person can't go back on itself.
+        Checkes to make sure Worker can't go back on itself.
         '''
         
         if action == 'UP' and direction != 'DOWN':
@@ -57,27 +57,27 @@ class PersonEnv():
             
         return direction
     
-    def move(self,direction,Person_pos):
+    def move(self,direction,Worker_pos):
         '''
-        Updates Person_pos list to reflect direction change.
+        Updates Worker_pos list to reflect direction change.
         '''
             
         if direction == 'UP':
-            Person_pos[1] -= 10
+            Worker_pos[1] -= 10
         if direction == 'DOWN':
-            Person_pos[1] += 10
+            Worker_pos[1] += 10
         if direction == 'LEFT':
-            Person_pos[0] -= 10
+            Worker_pos[0] -= 10
         if direction == 'RIGHT':
-            Person_pos[0] += 10
+            Worker_pos[0] += 10
             
-        return Person_pos
+        return Worker_pos
     
     def eat(self):
         '''
-        Returns Boolean indicating if Person has "taken" the red seat square
+        Returns Boolean indicating if Worker has "taken" the red seat square
         '''
-        return self.Person_pos[0] == self.seat_pos[0] and self.Person_pos[1] == self.seat_pos[1]
+        return self.Worker_pos[0] == self.seat_pos[0] and self.Worker_pos[1] == self.seat_pos[1]
     
    
     def spawn_seat(self):
@@ -133,18 +133,18 @@ class PersonEnv():
         
     def game_over(self):
         '''
-        Checks if the Person has touched the bounding box or itself
+        Checks if the Worker has touched the bounding box or itself
         '''
         
         # TOUCH BOX
-        #if self.Person_pos[0] < 0 or self.Person_pos[0] > self.frame_size_x-10:
+        #if self.Worker_pos[0] < 0 or self.Worker_pos[0] > self.frame_size_x-10:
         #    self.end_game()
-        #if self.Person_pos[1] < 0 or self.Person_pos[1] > self.frame_size_y-10:
+        #if self.Worker_pos[1] < 0 or self.Worker_pos[1] > self.frame_size_y-10:
         #    self.end_game()
 
         # TOUCH OWN BODY
-        #for block in self.Person_body[1:]:
-        #    if self.Person_pos[0] == block[0] and self.Person_pos[1] == block[1]:
+        #for block in self.Worker_body[1:]:
+        #    if self.Worker_pos[0] == block[0] and self.Worker_pos[1] == block[1]:
         #        self.end_game()
  
 
@@ -166,10 +166,10 @@ class PersonEnv():
         sys.exit()
 
 
-Person_env = PersonEnv(1024,768)
+Worker_env = WorkerEnv(1024,768)
 
 # This is technically a FPS Refresh rate
-# Higher number means faster refresh, thus faster Person movement, meaning harder game play
+# Higher number means faster refresh, thus faster Worker movement, meaning harder game play
 difficulty = 10
 
 
@@ -181,7 +181,7 @@ check_errors = pygame.init()
 
 
 # Initialise game window
-pygame.display.set_caption('Person Booker') 
+pygame.display.set_caption('Worker Booker') 
 
 ############## Custom additons ################
 import random
@@ -224,15 +224,15 @@ while running:
     # Check Input from Human Step 
     for event in pygame.event.get():
         
-        Person_env.action = Person_env.human_step(event)
+        Worker_env.action = Worker_env.human_step(event)
     
         #if event.type == pygame.QUIT:
         #    running = False
 
 
     # Check for Direction change based on action
-    Person_env.direction = Person_env.change_direction(Person_env.action,Person_env.direction)
-    print(Person_env.Person_pos)
+    Worker_env.direction = Worker_env.change_direction(Worker_env.action,Worker_env.direction)
+    print(Worker_env.Worker_pos)
 
 ####################à
     
@@ -270,65 +270,65 @@ while running:
 
 ######################
 
-    #Update Person Position
-    Person_env.Person_pos = Person_env.move(Person_env.direction,Person_env.Person_pos)
+    #Update Worker Position
+    Worker_env.Worker_pos = Worker_env.move(Worker_env.direction,Worker_env.Worker_pos)
 
 
     # Check to see if we ate some seat
-    Person_env.Person_body.insert(0, list(Person_env.Person_pos))
-    if Person_env.eat():
-        Person_env.score += 1
-        Person_env.seat_spawn = False
+    Worker_env.Worker_body.insert(0, list(Worker_env.Worker_pos))
+    if Worker_env.eat():
+        Worker_env.score += 1
+        Worker_env.seat_spawn = False
     else:
-        Person_env.Person_body.pop()
+        Worker_env.Worker_body.pop()
 
     # Check to see if we need to spawn new seat 
-    if not Person_env.seat_spawn:
-        Person_env.seat_pos = Person_env.spawn_seat()
-    Person_env.seat_spawn = True
+    if not Worker_env.seat_spawn:
+        Worker_env.seat_pos = Worker_env.spawn_seat()
+    Worker_env.seat_spawn = True
 
     
-   # Person_env.game_window.fill(BLACK)
+   # Worker_env.game_window.fill(BLACK)
 
     bg = pygame.image.load("background.png")
     #INSIDE OF THE GAME LOOP
-    Person_env.game_window.blit(bg, (0, 0))
+    Worker_env.game_window.blit(bg, (0, 0))
 
     ################
     #Draw rectangles to represent the rect's of each object
-    pygame.draw.rect(Person_env.game_window, (0, 255, 0), man_rect, 1)
-    pygame.draw.rect(Person_env.game_window, (255, 255, 0), desktop_rect, 1)
-    pygame.draw.rect(Person_env.game_window, (255, 255, 0), desktop_rect2, 1)
+    pygame.draw.rect(Worker_env.game_window, (0, 255, 0), man_rect, 1)
+    pygame.draw.rect(Worker_env.game_window, (255, 255, 0), desktop_rect, 1)
+    pygame.draw.rect(Worker_env.game_window, (255, 255, 0), desktop_rect2, 1)
 
 
     #Blit assets
-    Person_env.game_window.blit(man_image, man_rect)
-    Person_env.game_window.blit(desktop_image, desktop_rect)
-    Person_env.game_window.blit(desktop_image2, desktop_rect2)
+    Worker_env.game_window.blit(man_image, man_rect)
+    Worker_env.game_window.blit(desktop_image, desktop_rect)
+    Worker_env.game_window.blit(desktop_image2, desktop_rect2)
 
     #####    
-    # Draw the Person
+    # Draw the Worker
     
-    for pos in Person_env.Person_body:
-        pygame.draw.rect(Person_env.game_window, GREEN, pygame.Rect(pos[0], pos[1], 10, 10))
+    for pos in Worker_env.Worker_body:
+        pygame.draw.rect(Worker_env.game_window, GREEN, pygame.Rect(pos[0], pos[1], 10, 10))
         
     # Draw seat
     pygame.draw.rect(
         
-                     Person_env.game_window, RED, 
-                     pygame.Rect(Person_env.seat_pos[0], 
-                     Person_env.seat_pos[1], 10, 10)
+                     Worker_env.game_window, RED, 
+                     pygame.Rect(Worker_env.seat_pos[0], 
+                     Worker_env.seat_pos[1], 10, 10)
         
                      )
 
     # Check if we lost
-    Person_env.game_over()
+    Worker_env.game_over()
     
     
 
-    Person_env.display_score(BLACK, 'consolas', 20)
+    Worker_env.display_score(BLACK, 'consolas', 20)
     # Refresh game screen
     pygame.display.update()
     # Refresh rate
     fps_controller.tick(difficulty)
-    img = array3d(Person_env.game_window)       
+    img = array3d(Worker_env.game_window)       
