@@ -226,3 +226,27 @@ Each time you arrive to the red circles you got the **hit desired** goal otherwi
 ![image-20221123003011023](README.assets/image-20221123003011023.png)
 
 The next step is create the gym environment by using this game.
+
+
+
+# Custom Environment Creation
+
+Once the custom environment were created 
+
+```
+pip install -e worker
+```
+
+
+
+![image-20221123151904876](README.assets/image-20221123151904876.png)
+
+
+
+```
+C:.
+├───gymworker.egg-info
+└───worker
+    └───envs
+```
+
