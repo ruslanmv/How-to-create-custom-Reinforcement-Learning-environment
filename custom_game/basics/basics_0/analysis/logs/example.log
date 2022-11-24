@@ -1,0 +1,6 @@
+INFO:root:<class 'numpy.ndarray'>
+INFO:root:<class 'numpy.ndarray'>
+INFO:src.configs:[[856.16666667 205.91666667]
+ [124.41304348 228.13043478]
+ [253.60714286 569.57142857]
+ [712.65       580.475     ]]
