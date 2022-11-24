@@ -8,7 +8,7 @@ from src.libs import *
 from src.configs import IMAGES, DATA
 
 BASE_FILENAME: Path = IMAGES / Path("background.png")
-SHOW_FIG_FLAG: bool = False
+SHOW_FIG_FLAG: bool = True
 SAVE_FIG_FLAG: bool = True
 
 import logging

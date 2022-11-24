@@ -7,7 +7,9 @@ DATA: Path = ROOT / Path("data")
 LOGS: Path = ROOT / Path("logs")
 
 DIRS = []
-DIRS.append(IMAGES, DATA, LOGS)
+DIRS.append(IMAGES)
+DIRS.append(DATA)
+DIRS.append(LOGS)
 for a_dir in DIRS:
     a_dir.mkdir(exist_ok=True)
 
