@@ -8,7 +8,7 @@ WHITE: pygame.Color = pygame.Color(255, 255, 255)
 RED: pygame.Color = pygame.Color(255, 0, 0)
 GREEN: pygame.Color = pygame.Color(0, 255, 0)
 BLUE: pygame.Color = pygame.Color(0, 0, 255)
-TAREGT_COLOR: pygame.Color = pygame.Color(0, 255, 255)
+TAREGT_COLOR: pygame.Color = pygame.Color(255,215,0)# pygame.Color(0, 255, 255)
 
 
 # =============================================================================================== #
@@ -17,7 +17,7 @@ TAREGT_COLOR: pygame.Color = pygame.Color(0, 255, 255)
 FLAG_BLACK_BG: bool = False # Enable Black Background
 NO_SEATS_FLAG: bool = False
 SEATS_FLAG: bool = True
-STEPS: int = 50
+STEPS: int = 1000
 
 SHOW_WORKER_POS: bool = False
 RANDOM_SEAT: bool = True
@@ -28,8 +28,8 @@ RANDOM_SEAT: bool = True
 # This is technically a FPS Refresh rate
 # Higher number means faster refresh, thus faster Worker movement, meaning harder game play
 DIFFICULTY: int = 10
-WIDTH: int = 1024
-HEIGHT: int = 768
+WIDTH: int = 1024 # 1024
+HEIGHT: int = 768 # 768
 
 RENDER_MODE: str = 'worker'
 TARGET_SEAT:int = 50
@@ -57,9 +57,13 @@ if NO_SEATS_FLAG:
 elif SEATS_FLAG:
     DATA = ROOT / Path("data")
     SEATS = DATA / Path("seats.pkl")
+    CLUSTERS = DATA / Path("clusters.csv")
+    
     if not FLAG_BLACK_BG:
         with open(str(SEATS), 'rb') as f:
             SEATS_COORDS = pickle.load(f)
+        SEATS_CLUSTERS = pd.read_csv(str(CLUSTERS))
+        SEATS_CLUSTERS["occupied"] = [random.randint(0, 1) for _ in range(SEATS_CLUSTERS.shape[0])]
         if RANDOM_SEAT:
             TARGET_SEAT = random.randint(0, len(SEATS_COORDS))
         TARGET_COORDS: list = SEATS_COORDS[TARGET_SEAT]

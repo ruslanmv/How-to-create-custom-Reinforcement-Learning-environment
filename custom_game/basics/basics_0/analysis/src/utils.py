@@ -40,7 +40,17 @@ def assign_claster(df, k_means):
 # Plot Data
 # ============================================== #
 
-def plot_kmeans(k_means, X, t_batch):
+def plot_raw_data(df, show=False):
+    fig, ax = plt.subplots(1, 1, figsize=(10, 10))
+    sns.scatterplot(data=df, x="x_coord", y="y_coord", ax=ax)
+    img_raw_data_path: str = str(IMAGES / Path("raw_data.png"))
+    plt.savefig(img_raw_data_path)
+    if show:
+        plt.show()
+    else:
+        plt.close()
+
+def plot_kmeans(k_means, X, t_batch, show=False):
     fig = plt.figure(figsize=(10, 10))
     fig.subplots_adjust(left=0.02, right=0.98, bottom=0.05, top=0.9)
     colors = ["#4EACC5", "#FF9C34", "#4E9A06", "#52069a", "#8F8B66"]
@@ -71,7 +81,13 @@ def plot_kmeans(k_means, X, t_batch):
     ax.set_yticks(())
     # ax.text(-3.5, 1.8, "train time: %.2fs\ninertia: %f" % (t_batch, k_means.inertia_))
     ax.text(+500, +500, "train time: %.2fs\ninertia: %f" % (t_batch, k_means.inertia_))
-    plt.show()
+
+    img_cluster_filepath: str = str(IMAGES / Path("clusters_and_centroids.png"))
+    plt.savefig(img_cluster_filepath)
+    if show:
+        plt.show()
+    else:
+        plt.close()
 
 
 # ============================================== #

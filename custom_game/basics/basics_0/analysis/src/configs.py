@@ -3,9 +3,11 @@ from src.libs import *
 ROOT = Path(__name__).parent.parent
 
 DATA = ROOT / Path("data")
+IMAGES = ROOT / Path("images")
 LOGS = ROOT / Path("logs")
 DIRS = []
 DIRS.append(DATA)
+DIRS.append(IMAGES)
 DIRS.append(LOGS)
 # DIRS.append()
 for a_dir in DIRS:

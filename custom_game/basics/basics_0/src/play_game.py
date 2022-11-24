@@ -62,12 +62,18 @@ def _clear_screen(game_env: WorkerEnv) -> None:
         game_env.game_window.fill(BLACK)
     elif SEATS_FLAG:
         bg = pygame.image.load(BACKGROUND_IMAGE)
+        # game_env.game_window.blit(pygame.transform.scale(bg, (WIDTH, HEIGHT)), (0, 0))
         game_env.game_window.blit(bg, (0, 0))
+        occupied = SEATS_CLUSTERS["occupied"].values
         for ii, pos in enumerate(SEATS_COORDS):
+            rect: pygame.Rect = pygame.Rect(pos[0], pos[1], 10, 10)
             if ii == TARGET_SEAT:
-                pygame.draw.rect(game_env.game_window, TAREGT_COLOR, pygame.Rect(pos[0], pos[1], 10, 10))
+                rect: pygame.Rect = pygame.draw.rect(game_env.game_window, TAREGT_COLOR, rect)
             else:
-                pygame.draw.rect(game_env.game_window, RED, pygame.Rect(pos[0], pos[1], 10, 10))
+                if occupied[ii]:
+                    rect: pygame.Rect = pygame.draw.rect(game_env.game_window, RED, rect)
+                else:
+                    rect:pygame.Rect = pygame.draw.rect(game_env.game_window, GREEN, rect)
     else:
         game_env.game_window.fill(BLACK)
         pos = TARGET_COORDS

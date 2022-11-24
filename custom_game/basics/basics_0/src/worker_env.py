@@ -16,6 +16,7 @@ class WorkerEnv():
         '''
         Resets the game, along with the default Worker size and spawning seat.
         '''
+        self.win_flag = False
         self.game_window.fill(BLACK)
         self.worker_pos = [100, 50]
         self.worker_body = [[100, 50], [100-10, 50], [100-(2*10), 50]]
@@ -70,12 +71,12 @@ class WorkerEnv():
         '''
         
         action = None
-        self.steps += steps
         
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
         elif event.type == pygame.KEYDOWN:
+            self.steps += steps
             if event.key == pygame.K_UP:
                 action = 'UP'
             if event.key == pygame.K_DOWN:
@@ -103,13 +104,19 @@ class WorkerEnv():
         score_font = pygame.font.SysFont(font, size)
         score_surface = score_font.render('Max Score : 100', True, color)
         score_rect = score_surface.get_rect()
-        score_rect.midtop = (self.frame_size_x//2, 50)
+        score_rect.midtop = (self.frame_size_x//2, 90)
         self.game_window.blit(score_surface, score_rect)
 
         score_font = pygame.font.SysFont(font, size)
         score_surface = score_font.render('Achieved Score : ' + str(self.score), True, color)
         score_rect = score_surface.get_rect()
-        score_rect.midtop = (self.frame_size_x//2, 90)
+        score_rect.midtop = (self.frame_size_x//2, 50)
+        self.game_window.blit(score_surface, score_rect)
+
+        score_font = pygame.font.SysFont(font, size)
+        score_surface = score_font.render('Max Allowed Steps: ' + str(STEPS), True, color)
+        score_rect = score_surface.get_rect()
+        score_rect.midtop = (self.frame_size_x//2, 110)
         self.game_window.blit(score_surface, score_rect)
         
     def win(self, target):
@@ -118,6 +125,7 @@ class WorkerEnv():
         head = pygame.Rect(head_pos[0], head_pos[1], 10, 10)
         if head.colliderect(target):
             self.score = 100 - self.steps
+            self.win_flag = True
             self.end_game()
 
     def game_over(self,):
@@ -143,7 +151,10 @@ class WorkerEnv():
         
         '''
         message = pygame.font.SysFont('arial', 45)
-        message_surface = message.render('Game has Ended.', True, RED)
+        if self.win_flag:
+            message_surface = message.render('Game has Ended: You WIN!.', True, RED)
+        else:
+            message_surface = message.render('Game has Ended: Retry to Win!.', True, RED)
         message_rect = message_surface.get_rect()
         message_rect.midtop = (self.frame_size_x/2, self.frame_size_y/4)
         self.game_window.fill(BLACK)
