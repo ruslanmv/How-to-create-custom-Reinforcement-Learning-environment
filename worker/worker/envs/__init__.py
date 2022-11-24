@@ -1,1 +1,1 @@
-from snake.envs.snake_env import SnakeEnv
+from worker.envs.worker_env import WorkerEnv

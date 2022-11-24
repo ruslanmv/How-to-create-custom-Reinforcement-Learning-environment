@@ -12,14 +12,46 @@ WHITE = pygame.Color(255, 255, 255)
 RED = pygame.Color(255, 0, 0)
 GREEN = pygame.Color(0, 255, 0)
 BLUE = pygame.Color(0, 0, 255)
+import pickle
+with open('seats.pkl', 'rb') as f:
+    seats_coordinates = pickle.load(f)
+
+#Create a display surface
+WINDOW_WIDTH = 1024
+WINDOW_HEIGHT = 768
+
+#Set FPS amnd clock
+FPS = 60
+clock = pygame.time.Clock()
+
+#Set game values
+VELOCITY = 5
+
+#Load images
+man_image = pygame.image.load("point_yellow.png")
+man_rect = man_image.get_rect()
+man_rect.topleft = (25, 25)
+
+desktop_image = pygame.image.load("point_blue.png")
+desktop_rect = desktop_image.get_rect()
+
+desktop_pos_1=random.choice(seats_coordinates)
+desktop_rect.center = (desktop_pos_1[0], desktop_pos_1[1])
+
+desktop_image2 = pygame.image.load("point_red.png")
+desktop_rect2 = desktop_image2.get_rect()
+desktop_pos_2=random.choice(seats_coordinates)
+desktop_rect2.center = (desktop_pos_2[0], desktop_pos_2[1])
+
+
 
 class WorkerEnv(gym.Env):
     metadata = {'render.modes': ['human']}
 
     def __init__(self):
         self.action_space = spaces.Discrete(4)
-        self.frame_size_x = 200
-        self.frame_size_y = 200
+        self.frame_size_x = 1024
+        self.frame_size_y = 768
         self.game_window = pygame.display.set_mode((self.frame_size_x, self.frame_size_y))
         self.reset()
         self.STEP_LIMIT = 1000
@@ -91,7 +123,11 @@ class WorkerEnv(gym.Env):
         return reward
 
     def update_game_state(self):
-        self.game_window.fill(BLACK)
+        #self.game_window.fill(BLACK)
+        bg = pygame.image.load("background.png")
+        #INSIDE OF THE GAME LOOP
+        self.game_window.blit(bg, (0, 0))
+
         for pos in self.Worker_body:
             pygame.draw.rect(self.game_window, GREEN, pygame.Rect(pos[0], pos[1], 10, 10))
 
@@ -119,7 +155,11 @@ class WorkerEnv(gym.Env):
 
 
     def reset(self):
-        self.game_window.fill(BLACK)
+        #self.game_window.fill(BLACK)
+        bg = pygame.image.load("background.png")
+        #INSIDE OF THE GAME LOOP
+        self.game_window.blit(bg, (0, 0))
+
         self.Worker_pos = [100, 50]
         self.Worker_body = [[100, 50], [100-10, 50], [100-(2*10), 50]]
         self.seat_pos = self.spawn_seat()
