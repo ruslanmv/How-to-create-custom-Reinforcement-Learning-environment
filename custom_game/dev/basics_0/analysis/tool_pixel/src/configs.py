@@ -1,7 +1,16 @@
 from pathlib import Path
+
 ROOT: Path = Path(__name__).parent.parent.parent.resolve()
+
 IMAGES: Path = ROOT / Path("images")
+DATA: Path = ROOT / Path("data")
+LOGS: Path = ROOT / Path("logs")
+
+DIRS = []
+DIRS.append(IMAGES, DATA, LOGS)
+for a_dir in DIRS:
+    a_dir.mkdir(exist_ok=True)
 
 if __name__ == "__main__":
-    print(ROOT)
-    print(IMAGES)
+    from pprint import pprint
+    pprint(DIRS)

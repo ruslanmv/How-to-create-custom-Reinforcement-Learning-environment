@@ -5,7 +5,7 @@ SRC: Path = Path(__name__).parent.parent.parent.resolve()
 sys.path.append(abspath(SRC))
 
 from src.libs import *
-from src.configs import IMAGES
+from src.configs import IMAGES, DATA
 
 BASE_FILENAME: Path = IMAGES / Path("background.png")
 SHOW_FIG_FLAG: bool = False
@@ -80,7 +80,8 @@ def create_and_save_seats_clean() -> list:
         cv2.imwrite(str(IMAGES / Path('original.png')), original)
     # cv2.waitKey()
     seats_clean = [list(i[0]) for i in seats_coordinates if i[0] is not None]
-    with open('seats.pkl', 'wb') as f:
+    out_data_path: str = str(DATA / Path("'seats.pkl'"))
+    with open(f"{out_data_path}", 'wb') as f:
         pickle.dump(seats_clean, f)
     return seats_clean
 

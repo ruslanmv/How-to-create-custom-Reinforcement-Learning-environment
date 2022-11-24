@@ -32,6 +32,7 @@ def define_script_logger():
     return logger
 logger = define_script_logger()
 
+
 def show_blurred_image():
     img = cv2.imread(str(BASE_FILENAME))
     blur_hor = cv2.filter2D(img[:, :, 0], cv2.CV_32F, kernel=np.ones((11,1,1), np.float32)/11.0, borderType=cv2.BORDER_CONSTANT)
