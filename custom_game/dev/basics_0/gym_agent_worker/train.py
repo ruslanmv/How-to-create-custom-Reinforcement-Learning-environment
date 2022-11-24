@@ -27,7 +27,8 @@ logger: logging.Logger = define_script_logger()
 
 def main() -> None:
     logger.info(f"Setup GYM env for mode={RENDER_MODE}...")
-    env = gym.make(f"{RENDER_MODE}:{RENDER_MODE}-v0")
+    # env = gym.make(f"{RENDER_MODE}:{RENDER_MODE}-v0")
+    env = gym.make(f"worker:worker-v0")
 
     nb_actions = env.action_space.n
     input_shape = (WINDOW_LENGTH, IMG_SHAPE[0], IMG_SHAPE[1])

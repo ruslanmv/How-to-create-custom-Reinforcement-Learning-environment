@@ -53,6 +53,7 @@ def get_model(input_shape, nb_actions) -> Sequential:
     model.add(Dense(nb_actions))
     model.add(Activation('linear'))
     print(model.summary())
+    return model
 
 
 def get_dqnagent(model, nb_actions) -> DQNAgent:
