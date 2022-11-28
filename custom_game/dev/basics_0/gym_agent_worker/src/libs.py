@@ -17,7 +17,7 @@ from pygame import display
 
 from PIL import Image  # To transform the image in the Processor
 
-"""
+
 # Convolutional Backbone Network
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Activation, Flatten, Convolution2D, Permute
@@ -29,4 +29,3 @@ from rl.policy import LinearAnnealedPolicy, EpsGreedyQPolicy
 from rl.memory import SequentialMemory
 from rl.core import Processor
 from rl.callbacks import FileLogger, ModelIntervalCheckpoint
-"""

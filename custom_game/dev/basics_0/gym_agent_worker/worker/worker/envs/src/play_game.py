@@ -57,23 +57,17 @@ def _check_inputs_from_game_step(game_env: WorkerEnv) -> bool:
     return True
 
 
-def _clear_screen(game_env: WorkerEnv) -> None:
+def _clear_screen(game_env):
     if FLAG_BLACK_BG and NO_SEATS_FLAG:
         game_env.game_window.fill(BLACK)
     elif SEATS_FLAG:
         bg = pygame.image.load(BACKGROUND_IMAGE)
-        # game_env.game_window.blit(pygame.transform.scale(bg, (WIDTH, HEIGHT)), (0, 0))
         game_env.game_window.blit(bg, (0, 0))
-        occupied = SEATS_CLUSTERS["occupied"].values
         for ii, pos in enumerate(SEATS_COORDS):
-            rect: pygame.Rect = pygame.Rect(pos[0], pos[1], 10, 10)
             if ii == TARGET_SEAT:
-                rect: pygame.Rect = pygame.draw.rect(game_env.game_window, TAREGT_COLOR, rect)
+                pygame.draw.rect(game_env.game_window, TAREGT_COLOR, pygame.Rect(pos[0], pos[1], 10, 10))
             else:
-                if occupied[ii]:
-                    rect: pygame.Rect = pygame.draw.rect(game_env.game_window, RED, rect)
-                else:
-                    rect:pygame.Rect = pygame.draw.rect(game_env.game_window, GREEN, rect)
+                pygame.draw.rect(game_env.game_window, RED, pygame.Rect(pos[0], pos[1], 10, 10))
     else:
         game_env.game_window.fill(BLACK)
         pos = TARGET_COORDS
@@ -85,12 +79,6 @@ def _clear_screen(game_env: WorkerEnv) -> None:
 # =============================================================================================== #
 
 def play_game(game_config: dict) -> None:
-    """Play the game.
-    Args:
-    ---
-    `game_config`: input dict.\n
-    """
-
     # Unbox inpuit config
     game_env = game_config["game_env"]
     fps_controller = game_config["fps_controller"]
