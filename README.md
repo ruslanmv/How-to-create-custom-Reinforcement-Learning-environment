@@ -235,6 +235,33 @@ The next step is create the gym environment by using this game.
 
 
 
+## Introduction
+
+
+
+The main OpenAI Gym class. It encapsulates an environment with arbitrary behind-the-scenes dynamics. An environment can be partially or fully observed.  The main API methods that users of this class need to know are:
+
+- ​        step
+- ​        reset
+- ​        render
+- ​        close
+- ​        seed
+
+
+
+And set the following attributes:
+
+**action_space**: The Space object corresponding to valid actions
+
+ **observation_space**: The Space object corresponding to valid observations
+
+ **reward_range**: A tuple corresponding to the min and max possible rewards
+
+
+
+Note: a default reward range set to [-inf,+inf] already exists. Set it if you want a narrower range.
+The methods are accessed publicly as "step", "reset", etc.. The non-underscored versions are wrapper methods to which we may add functionality over time.
+
 
 
 If you try doing a custom environment from the [official guide](https://github.com/openai/gym/blob/master/docs/creating-environments.md), chances are, you will start with building this file structure:
@@ -275,8 +302,6 @@ register(id='basic-v2',entry_point='gym_basic.envs:BasicEnv2',)
 from gym_basic.envs.basic_env import BasicEnv
 from gym_basic.envs.basic_env_2 import BasicEnv2
 ```
-
-
 
 ## gym-basic/gym_basic/envs/basic_env.py
 
@@ -345,7 +370,6 @@ class BasicEnv2(gym.Env):
 
         # if we took an action, we were in state 1
         state = 1
-    
         reward = np.random.normal(loc = action, scale = action)
             
         # regardless of the action, game is done after a single step
@@ -366,8 +390,6 @@ class BasicEnv2(gym.Env):
         pass
 
 ```
-
-
 
 ## How to Register your Environment
 
@@ -396,8 +418,6 @@ All right, we registered the Gym environment. We can finally concentrate on the 
 It’s important to note that **you can have as many helping functions within your class as you want**, and it doesn’t matter what you call them, as long as they don’t use any of the reserved names.
 
 ## Environment Example
-
-
 
 
 
