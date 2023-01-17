@@ -13,7 +13,7 @@ First you need to install anaconda at this [link](https://www.anaconda.com/produ
 then after is installed type in your terminal
 
 ```
-conda create -n gym python==3.7
+conda create -n gym python==3.8
 ```
 
 then
@@ -25,7 +25,11 @@ conda activate gym
 then we install the following libraries
 
 ```
-pip install   gym==0.18.0 keras notebook  pygame matplotlib tensorflow  keras-rl2
+pip install   gym==0.18.0 keras notebook  pygame matplotlib tensorflow  keras-rl2 ray pandas dm_tree opencv-python seaborn
+```
+
+```
+pip install ray[tune]  lz4
 ```
 
 hen in your terminal type the following commands:
