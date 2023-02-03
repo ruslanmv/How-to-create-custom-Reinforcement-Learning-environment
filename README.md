@@ -25,7 +25,11 @@ conda activate gym
 then we install the following libraries
 
 ```
-pip install   gym==0.18.0 keras notebook  pygame matplotlib tensorflow  keras-rl2 ray pandas dm_tree opencv-python seaborn
+pip install extras_require gym==0.18.0 keras notebook  pygame matplotlib tensorflow  keras-rl2 ray pandas dm_tree opencv-python seaborn scipy
+```
+
+```py
+pip install --upgrade gym==0.19.0
 ```
 
 ```
