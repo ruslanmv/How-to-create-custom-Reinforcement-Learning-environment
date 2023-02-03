@@ -27,14 +27,20 @@ then we install the following libraries
 pip install --upgrade setuptools.
 
 ```
-pip install extras_require keras notebook  pygame matplotlib tensorflow  keras-rl2 ray pandas dm_tree opencv-python seaborn scipy tensorflow_probability torch stable_baselines3
+pip install extras_require keras notebook  pygame matplotlib tensorflow  keras-rl2 ray pandas dm_tree opencv-python seaborn scipy tensorflow_probability torch
 ```
 
 ```
 pip install ray[tune]  lz4
 ```
 
-hen in your terminal type the following commands:
+```
+pip install stable-baselines3==1.4.0
+```
+
+nstall stable-baselines3
+
+then in your terminal type the following commands:
 
 ```
 conda install ipykernel
