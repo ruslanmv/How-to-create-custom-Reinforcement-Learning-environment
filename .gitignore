@@ -1,3 +1,7 @@
 
 .ipynb_checkpoints/
 *.ipynb_checkpoints
+custom_game/test_dataset.csv
+custom_game/gym-basic/test_dataset.csv
+custom_game/gym-basic/logs/
+custom_game/gym-basic/models/
