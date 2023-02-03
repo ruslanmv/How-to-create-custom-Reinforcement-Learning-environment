@@ -13,7 +13,7 @@ First you need to install anaconda at this [link](https://www.anaconda.com/produ
 then after is installed type in your terminal
 
 ```
-conda create -n gym python==3.8
+conda create -n gym python==3.8 gym==0.18.0 
 ```
 
 then
@@ -24,12 +24,10 @@ conda activate gym
 
 then we install the following libraries
 
-```
-pip install extras_require gym==0.18.0 keras notebook  pygame matplotlib tensorflow  keras-rl2 ray pandas dm_tree opencv-python seaborn scipy
-```
+pip install --upgrade setuptools.
 
-```py
-pip install --upgrade gym==0.19.0
+```
+pip install extras_require keras notebook  pygame matplotlib tensorflow  keras-rl2 ray pandas dm_tree opencv-python seaborn scipy tensorflow_probability torch stable_baselines3
 ```
 
 ```
@@ -241,11 +239,7 @@ The next step is create the gym environment by using this game.
 
 # File Structure
 
-
-
 ## Introduction
-
-
 
 The main OpenAI Gym class. It encapsulates an environment with arbitrary behind-the-scenes dynamics. An environment can be partially or fully observed.  The main API methods that users of this class need to know are:
 
@@ -426,10 +420,6 @@ All right, we registered the Gym environment. We can finally concentrate on the 
 It’s important to note that **you can have as many helping functions within your class as you want**, and it doesn’t matter what you call them, as long as they don’t use any of the reserved names.
 
 ## Environment Example
-
-
-
-
 
 # Custom Environment Creation
 
