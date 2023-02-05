@@ -30,15 +30,31 @@ then
 conda activate gym
 ```
 
+# Creation of the project
+
+and then  we clone our repository
+
+```
+git clone https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment.git
+```
+
+```
+cd How-to-create-custom-Reinforcement-Learning-environment
+```
+
 then we install the following libraries
 
 ```
-pip install ray[rllib] pandas pygame matplotlib dm_tree 
+pip install -r requirements.txt
 ```
 
+or
+
 ```
-pip install torch==1.7.1  install extras_require keras   tensorflow  keras-rl2  opencv-python seaborn scipy tensorflow_probability torch lz4 gputil
+pip install torch==1.7.1  install extras_require keras   tensorflow  keras-rl2  opencv-python seaborn scipy tensorflow_probability torch lz4 gputil ray[rllib] pandas pygame matplotlib dm_tree 
 ```
+
+
 
 then in your terminal type the following commands:
 
@@ -52,19 +68,9 @@ then we install
 python -m ipykernel install --user --name gym --display-name "Python (Gym)"
 ```
 
-# Creation of the project
-
-and then  we clone our repository
-
-```
-git clone https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment.git
-```
 
 
 
-```
-cd How-to-create-custom-Reinforcement-Learning-environment
-```
 
 ```
 pip install -e snake
