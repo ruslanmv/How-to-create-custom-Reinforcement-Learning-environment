@@ -10,10 +10,18 @@ Gymnasium is **an open source Python library for developing and comparing reinfo
 
 First you need to install anaconda at this [link](https://www.anaconda.com/products/individual)
 
+```
+conda update --all
+```
+
+```
+conda config --append channels conda-forge
+```
+
 then after is installed type in your terminal
 
 ```
-conda create -n gym python==3.8 gym==0.18.0 
+conda create -n gym python==3.8 gym==0.18.0
 ```
 
 then
@@ -24,21 +32,13 @@ conda activate gym
 
 then we install the following libraries
 
-pip install --upgrade setuptools.
-
 ```
-pip install extras_require keras notebook  pygame matplotlib tensorflow  keras-rl2 ray pandas dm_tree opencv-python seaborn scipy tensorflow_probability torch
+pip install ray[rllib] pandas pygame matplotlib dm_tree 
 ```
 
 ```
-pip install ray[tune]  lz4
+pip install torch==1.7.1  install extras_require keras   tensorflow  keras-rl2  opencv-python seaborn scipy tensorflow_probability torch lz4 gputil
 ```
-
-```
-pip install stable-baselines3==1.4.0
-```
-
-nstall stable-baselines3
 
 then in your terminal type the following commands:
 
@@ -51,6 +51,8 @@ then we install
 ```
 python -m ipykernel install --user --name gym --display-name "Python (Gym)"
 ```
+
+# Creation of the project
 
 and then  we clone our repository
 
@@ -134,10 +136,6 @@ in our case
 and finally the third notebook is simply an application of the Gym Environment into a RL model.
 
 [2-Applying-a-Custom-Environment.ipyn](https://github.com/ruslanmv/How-to-create-custom-Reinforcement-Learning-environment/blob/master/2-Applying-a-Custom-Environment.ipynb)
-
-
-
-
 
 # Custom office game
 
@@ -238,8 +236,6 @@ Each time you arrive to the red circles you got the **hit desired** goal otherwi
 ![image-20221123003011023](README.assets/image-20221123003011023.png)
 
 The next step is create the gym environment by using this game.
-
-
 
 #  Custom Environments
 
@@ -448,3 +444,101 @@ C:.
     └───envs
 ```
 
+Troobleshooting
+
+```
+pip install stable-baselines3==1.4.0
+```
+
+
+
+## Installing pytorch GPU compatible (optional)
+
+```
+conda install cuda -c nvidia
+```
+
+All Conda packages released under a specific CUDA version are labeled with that release version. To install a previous version, include that label in the install command such as:
+
+```
+conda install cuda -c nvidia/label/cuda-11.3.0
+```
+
+Some CUDA releases do not move to new versions of all installable components. When this is the case these components will be moved to the new label, and you may need to modify the install command to include both labels such as:
+
+```
+conda install cuda -c nvidia/label/cuda-11.3.0 -c nvidia/label/cuda-11.3.1
+```
+
+[For pip] Run `pip install` with specified version and `-f`
+
+```
+pip install torch==1.10.1+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html --user
+pip install torchaudio===0.10.1+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html --user
+pip install torchvision==0.11.2+cu113 torchaudio===0.10.1+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html --user
+```
+
+or
+
+```
+pip install torch==1.10.1 torchvision -f https://download.pytorch.org/whl/cu113/torch_stable.html 
+```
+
+Note: PyTorch only supports CUDA 11.3 up to 1.10.1. (Search `torch-` in https://download.pytorch.org/whl/cu113/torch_stable.html).
+
+[For conda] Run `conda install` with `cudatoolkit`
+
+```
+conda install pytorch torchvision cudatoolkit=10.0 -c pytorch
+```
+
+Verify PyTorch is installed
+
+Run `Python` with
+
+```
+import  torch
+x =torch.rand(5, 3)
+print(x)
+```
+
+Verify PyTorch is using CUDA 11.0
+
+Run `Python` with
+
+```
+import torch
+torch.cuda.is_available()
+```
+
+
+
+## Verify PyTorch is installed
+
+To insure that PyTorch has been set up properly, we will validate the installation by running a sample PyTorch script. Here we are going to create a randomly initialized tensor.
+
+```python
+import torch
+print(torch.rand(5, 3))
+```
+
+The following output will be printed. Yours will be similar.
+
+```
+tensor([[0.3380, 0.3845, 0.3217],
+[0.8337, 0.9050, 0.2650],
+[0.2979, 0.7141, 0.9069],
+[0.1449, 0.1132, 0.1375],
+[0.4675, 0.3947, 0.1426]])
+```
+
+## Verify if CUDA is available to PyTorch
+
+To test whether your GPU driver and CUDA are available and accessible by PyTorch, run the following Python code to determine whether or not the CUDA driver is enabled:
+
+```python
+import torch
+torch.cuda.is_available()
+```
+
+In case for people who are interested, the following 2 sections introduces PyTorch and CUDA.
