@@ -195,7 +195,7 @@ We can determine the coordinates with the following program
 
 we can get the list of coordinates of seats of the map.
 
-![image-20221122204208218](README.assets/image-20221122204208218.png)
+
 
 ## Automatic Generator of coordinates
 
@@ -209,11 +209,11 @@ In this program [Tool-pixel-3.ipynb](https://github.com/ruslanmv/How-to-create-c
 
 we can find the all the seats
 
-![image-20221122234534983](README.assets/image-20221122234534983.png)
+
 
 Then we find all the centers of those contours
 
-![image-20221122235428004](README.assets/image-20221122235428004.png)
+
 
 That will be the positions of our game
 
@@ -235,7 +235,7 @@ The red circles, the desired, and the blue ones, the not desired.
 
 
 
-![](README.assets/game_1.gif)
+
 
 Each time you arrive to the red circles you got the **hit desired** goal otherwise is  **hit not desired**:
 
